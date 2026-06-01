@@ -1,220 +1,164 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useState } from 'react';
 
-// Componente pequeño y optimizado para animar cada número de forma individual
-function Counter({ value, direction = "up" }: { value: number; direction?: "up" | "down" }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const motionValue = useMotionValue(direction === "down" ? value : 0);
-  const rounded = useTransform(motionValue, (latest) => Math.round(latest));
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+// Componente para el contador animado
+const Counter = ({ target, duration = 2000 }: { target: number; duration?: number }) => {
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (isInView) {
-      const controls = animate(motionValue, value, {
-        duration: 2,
-        ease: "easeOut",
-      });
-      return controls.stop;
-    }
-  }, [isInView, motionValue, value]);
-
-  useEffect(() => {
-    return rounded.on("change", (latest) => {
-      if (ref.current) {
-        ref.current.textContent = latest.toLocaleString();
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        clearInterval(timer);
+        setCount(target);
+      } else {
+        setCount(Math.floor(start));
       }
-    });
-  }, [rounded]);
+    }, 16);
 
-  return <span ref={ref}>0</span>;
-}
+    return () => clearInterval(timer);
+  }, [target, duration]);
+
+  return <span>{count.toLocaleString('es-ES')}</span>;
+};
 
 export default function Home() {
+  // Datos de ejemplo para las tiendas (puedes cambiar las direcciones y horarios a tu gusto)
+  const botigues = [
+    {
+      nom: "Casa Maresma - Central",
+      direccio: "Carrer de la Riera, 14",
+      ciutat: "Mataró (08301)",
+      horari: "Dilluns a Dissabte: 8:00h - 21:00h",
+      telefon: "937 55 00 00",
+      mapsUrl: "https://maps.google.com"
+    },
+    {
+      nom: "Casa Maresma - Mercat",
+      direccio: "Plaça de Cuba, 5",
+      ciutat: "Mataró (08302)",
+      horari: "Dilluns a Divendres: 8:30h - 14:00h / 17:00h - 20:30h",
+      telefon: "937 55 01 01",
+      mapsUrl: "https://maps.google.com"
+    },
+    {
+      nom: "Casa Maresma - Mar",
+      direccio: "Passeig Marítim, 82",
+      ciutat: "Vilassar de Mar (08340)",
+      horari: "Dilluns a Diumenge: 9:00h - 22:00h",
+      telefon: "937 55 02 02",
+      mapsUrl: "https://maps.google.com"
+    }
+  ];
+
   return (
-    <>
-      {/* SECCIÓN 1: HERO FULLSCREEN */}
-      <div className="relative w-full min-h-[calc(100vh-112px)] flex items-center justify-center overflow-hidden bg-black">
-        
-        {/* 1. IMAGEN DE FONDO FULLSCREEN */}
-        <Image
-          src="/hero-image.png"
-          alt="Casa Maresma Premium Background"
-          fill
-          priority
-          className="object-cover object-center scale-105"
-        />
-
-        {/* 2. OVERLAY ELEGANTE (Capa oscura de contraste estilo Apple/Tesla) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-
-        {/* 3. CONTENIDO PRINCIPAL CON ANIMACIONES FLUIDAS */}
-        <div className="relative z-20 max-w-7xl w-full mx-auto px-8 md:px-12 flex flex-col items-start gap-6 text-white">
-          
-          {/* Pequeño tag superior decorativo */}
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-xs font-bold uppercase tracking-widest text-maresma-rojo bg-maresma-rojo/10 px-4 py-1.5 rounded-full border border-maresma-rojo/20"
-          >
-            Des de 1989 al teu costat
-          </motion.span>
-
-          {/* Headline Principal en Catalán */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight max-w-4xl leading-[1.1]"
-          >
-            Menja millor. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
-              Compra al teu barri.
-            </span>
-          </motion.h1>
-
-          {/* Subheadline descriptivo premium */}
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-xl text-zinc-300 max-w-2xl font-light leading-relaxed"
-          >
-            A Casa Maresma seleccionem origen, qualitat i tradició per oferir-te la millor experiència gastronòmica de proximitat. Tallat al teu guix, amb la confiança de sempre.
-          </motion.p>
-
-          {/* 4. BOTONES DE ACCIÓN (CTAs) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mt-4"
-          >
-            {/* CTA Principal: Rojo Corporativo */}
-            <Link 
-              href="/botigues"
-              className="w-full sm:w-auto px-8 py-4 bg-maresma-rojo hover:bg-white hover:text-black font-bold text-sm rounded-full transition-all duration-300 tracking-wide uppercase text-center shadow-lg shadow-red-950/40"
-            >
-              Descobreix les botigues
-            </Link>
-
-            {/* CTA Secundario: Estilo Apple translúcido */}
-            <Link 
-              href="/sobre-nosaltres"
-              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm rounded-full transition-all duration-300 tracking-wide uppercase text-center backdrop-blur-sm"
-            >
-              La nostra història
-            </Link>
-          </motion.div>
-
-        </div>
-
-        {/* Indicador de scroll discreto abajo del todo */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2 text-zinc-500 text-xs tracking-widest uppercase font-medium"
-        >
-          <span>Explora</span>
-          <div className="w-1 h-8 bg-zinc-800 rounded-full overflow-hidden relative">
-            <div className="w-full h-1/2 bg-maresma-rojo absolute top-0 left-0 animate-bounce" />
+    <main className="bg-black text-white min-h-screen font-sans">
+      
+      {/* SECCIÓ: HERO (La que ya tenías desplegada) */}
+      <section className="relative h-screen flex items-center justify-center bg-cover bg-center px-4" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop')" }}>
+        <div className="max-w-4xl text-center z-10">
+          <span className="text-red-500 font-bold tracking-widest text-xs uppercase bg-red-950/50 px-3 py-1 rounded-full border border-red-900">Des de 1989 al teu costat</span>
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mt-6 mb-6">
+            Menja millor.<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Compra al teu barri.</span>
+          </h1>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+            A Casa Maresma seleccionem origen, qualitat i tradició per oferir-te la millor experiència gastronòmica de proximitat. Tallat al teu gust, amb la confiança de sempre.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-medium px-8 py-4 rounded-xl transition-all transform hover:-translate-y-0.5 shadow-lg shadow-red-950/50 text-sm tracking-wide uppercase">Descobreix les botigues</button>
+            <button className="bg-white/5 hover:bg-white/10 text-white border border-white/10 font-medium px-8 py-4 rounded-xl transition-all text-sm tracking-wide uppercase backdrop-blur-sm">La nostra història</button>
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-      </div>
-
-      {/* SECCIÓN 2: CASA MARESMA EN XIFRES (ESTILO PREMIUM APPLE) */}
-      <section className="w-full bg-zinc-950 py-24 md:py-32 border-t border-zinc-900 text-white relative overflow-hidden">
-        
-        {/* Sutil toque de luz de fondo */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-maresma-rojo/5 rounded-full blur-[120px] pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-8 md:px-12 relative z-10">
-          
-          {/* Cabecera de la sección */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-24">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-maresma-rojo mb-3">La nostra trajectòria</p>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Casa Maresma en xifres</h2>
+      {/* SECCIÓ: EN XIFRES (Los contadores animados) */}
+      <section className="py-24 bg-gradient-to-b from-neutral-950 to-black border-y border-neutral-900 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-xs uppercase tracking-widest font-bold text-red-500 mb-2">El nostre impacte</h2>
+            <p className="text-3xl font-bold tracking-tight md:text-4xl text-white">Casa Maresma en xifres</p>
+          </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 text-center">
+            <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
+              <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-2">
+                +<Counter target={35} />
+              </p>
+              <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Anys d'història</p>
             </div>
-            <p className="text-zinc-400 max-w-sm font-light text-sm md:text-base leading-relaxed">
-              Darrere de cada tall i de cada producte hi ha un compromís inquebrantable amb la nostra comunitat i la tradició xarcutera.
+            <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
+              <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 mb-2">
+                +<Counter target={12000} />
+              </p>
+              <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Clients feliços</p>
+            </div>
+            <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
+              <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-2">
+                <Counter target={8} />
+              </p>
+              <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Botigues físiques</p>
+            </div>
+            <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
+              <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 mb-2">
+                <Counter target={100} />%
+              </p>
+              <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Producte de proximitat</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 🆕 NUEVA SECCIÓ: LES NOSTRES BOTIGUES */}
+      <section className="py-24 bg-black">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-xs uppercase tracking-widest font-bold text-red-500 mb-2">Proximitat</h2>
+            <p className="text-3xl font-bold tracking-tight md:text-4xl text-white">Vine a visitar-nos</p>
+            <p className="text-gray-400 mt-4 max-w-xl mx-auto font-light">
+              Troba la teva botiga Casa Maresma més propera i gaudeix de la millor atenció personalitzada.
             </p>
           </div>
 
-          {/* Grid de Contadores Animados */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            
-            {/* Contador 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-col p-6 bg-zinc-900/40 rounded-3xl border border-zinc-800/60 backdrop-blur-sm"
-            >
-              <span className="text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 flex items-center">
-                +<Counter value={12} />
-              </span>
-              <span className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-2">Anys d'història</span>
-              <p className="text-xs text-zinc-500 font-light leading-relaxed">Oferint servei i la millor selecció als barris des del primer dia.</p>
-            </motion.div>
-
-            {/* Contador 2 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="flex flex-col p-6 bg-zinc-900/40 rounded-3xl border border-zinc-800/60 backdrop-blur-sm"
-            >
-              <span className="text-5xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400 mb-2 flex items-center">
-                <Counter value={100} />%
-              </span>
-              <span className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-2">Proximitat garantida</span>
-              <p className="text-xs text-zinc-500 font-light leading-relaxed">Treballem directament amb ramaders i productors locals de confiança.</p>
-            </motion.div>
-
-            {/* Contador 3 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col p-6 bg-zinc-900/40 rounded-3xl border border-zinc-800/60 backdrop-blur-sm"
-            >
-              <span className="text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 flex items-center">
-                +<Counter value={6} />
-              </span>
-              <span className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-2">Botigues actives</span>
-              <p className="text-xs text-zinc-500 font-light leading-relaxed">Punts de venda propers preparats per atendre't amb un tracte personalitzat.</p>
-            </motion.div>
-
-            {/* Contador 4 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col p-6 bg-zinc-900/40 rounded-3xl border border-zinc-800/60 backdrop-blur-sm"
-            >
-              <span className="text-5xl md:text-6xl font-extrabold tracking-tight text-maresma-rojo mb-2 flex items-center">
-                +<Counter value={3000} />
-              </span>
-              <span className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-2">Clients feliços</span>
-              <p className="text-xs text-zinc-500 font-light leading-relaxed">La fidelitat dels nostres veïns és el nostre millor segell de qualitat.</p>
-            </motion.div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {botigues.map((botiga, index) => (
+              <div key={index} className="bg-neutral-900/60 border border-neutral-800 p-8 rounded-2xl hover:border-red-900/50 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-red-500 transition-colors">{botiga.nom}</h3>
+                  <div className="space-y-3 text-gray-400 text-sm font-light">
+                    <p className="flex items-start gap-2">
+                      <span className="text-red-500 font-normal">📍</span> 
+                      <span>{botiga.direccio}<br />{botiga.ciutat}</span>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <span className="text-red-500 font-normal">🕒</span> 
+                      <span>{botiga.horari}</span>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <span className="text-red-500 font-normal">📞</span> 
+                      <span>{botiga.telefon}</span>
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-neutral-800/60">
+                  <a 
+                    href={botiga.mapsUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center bg-neutral-800 hover:bg-red-600 text-white font-medium py-3 px-4 rounded-xl transition-colors text-xs uppercase tracking-wider"
+                  >
+                    Com arribar-hi
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
-
         </div>
       </section>
-    </>
+
+    </main>
   );
 }
