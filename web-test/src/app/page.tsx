@@ -160,7 +160,7 @@ export default function Home() {
               className="flex flex-col p-6 bg-zinc-900/40 rounded-3xl border border-zinc-800/60 backdrop-blur-sm"
             >
               <span className="text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 flex items-center">
-                +<Counter value={35} />
+                +<Counter value={12} />
               </span>
               <span className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-2">Anys d'història</span>
               <p className="text-xs text-zinc-500 font-light leading-relaxed">Oferint servei i la millor selecció als barris des del primer dia.</p>
@@ -190,7 +190,7 @@ export default function Home() {
               className="flex flex-col p-6 bg-zinc-900/40 rounded-3xl border border-zinc-800/60 backdrop-blur-sm"
             >
               <span className="text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2 flex items-center">
-                +<Counter value={5} />
+                +<Counter value={6} />
               </span>
               <span className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-2">Botigues actives</span>
               <p className="text-xs text-zinc-500 font-light leading-relaxed">Punts de venda propers preparats per atendre't amb un tracte personalitzat.</p>
