@@ -118,7 +118,7 @@ export default function Home() {
       {/* SECCIÓ: HERO */}
       <section className="relative h-screen flex items-center justify-center bg-cover bg-center px-4" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/hero-image-rambla.png')" }}>
         <div className="max-w-4xl text-center z-10">
-          <span className="text-red-500 font-bold tracking-widest text-xs uppercase bg-red-950/50 px-3 py-1 rounded-full border border-red-900">Des de 1989 al teu costat</span>
+          <span className="text-red-500 font-bold tracking-widest text-xs uppercase bg-red-950/50 px-3 py-1 rounded-full border border-red-900">Des de 2014 al teu costat</span>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mt-6 mb-6">
             Menja millor.<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Compra al teu barri.</span>
           </h1>
@@ -142,13 +142,13 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 text-center">
             <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
               <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-2">
-                +<Counter target={35} />
+                +<Counter target={12} />
               </p>
               <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Anys d'història</p>
             </div>
             <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
               <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 mb-2">
-                +<Counter target={12000} />
+                +<Counter target={6000} />
               </p>
               <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Clients feliços</p>
             </div>
