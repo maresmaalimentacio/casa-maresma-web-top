@@ -251,145 +251,116 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🆕 SECCIÓ: APP CASA MARESMA (ESTIL APPLE / TESLA ULTRA MODERNA) */}
-      <section className="py-28 bg-gradient-to-b from-black to-neutral-950 overflow-hidden border-t border-neutral-900">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          {/* COLUMNA 1: MOCKUP SMARTPHONE AVANÇAT CON ANIMACIÓN */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="relative flex justify-center items-center w-full min-h-[500px]"
-          >
-            {/* Efecto halo de luz de fondo (Estilo Tesla/Apple) */}
-            <div className="absolute w-72 h-72 bg-red-600/10 blur-[120px] rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+{/* SECCIÓ: APP CASA MARESMA (ESTIL APPLE / TESLA ULTRA MODERNA) */}
+<section className="py-28 bg-gradient-to-b from-black to-neutral-950 overflow-hidden border-t border-neutral-900">
+  <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    
+    {/* COLUMNA 1: MOCKUP ISOMÈTRIC AMB ANIMACIÓ DE LEVITACIÓ */}
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative flex justify-center items-center w-full min-h-[500px]"
+    >
+      {/* Halo de llum de fons estil Tesla */}
+      <div className="absolute w-80 h-80 bg-red-600/10 blur-[130px] rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
-            {/* Chasis exterior del Smartphone */}
-            <motion.div 
-              whileHover={{ rotateY: -5, rotateX: 5, scale: 1.02 }}
-              transition={{ duration: 0.4 }}
-              className="relative w-[280px] h-[570px] bg-neutral-900 rounded-[48px] p-3 shadow-[0_0_50px_rgba(0,0,0,0.8)] border-4 border-neutral-800 flex-shrink-0"
-            >
-              {/* Pantalla interna reflectante */}
-              <div className="w-full h-full bg-black rounded-[40px] overflow-hidden relative border border-neutral-950 flex flex-col justify-between p-6 style={{ backgroundImage: 'linear-gradient(135deg, #0a0a0a 0%, #141414 100%)' }}">
-                
-                {/* Dynamic Island / Isla superior del móvil */}
-                <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-24 h-4.5 bg-neutral-900 rounded-full z-20 flex items-center justify-end px-2">
-                  <div className="w-1.5 h-1.5 bg-neutral-950 rounded-full border border-neutral-800/40" />
-                </div>
+      {/* Contenidor de la imatge amb moviment flotant continu (Animate infinit) */}
+      <motion.div
+        animate={{ 
+          y: [0, -15, 0],
+        }}
+        transition={{
+          duration: 4.5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="relative w-full max-w-[450px] h-auto z-10 drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)]"
+      >
+        <img 
+          src="/app-mockup-isometric.png" 
+          alt="App Casa Maresma Premium Mockup" 
+          className="w-full h-auto object-contain"
+        />
+      </motion.div>
+    </motion.div>
 
-                {/* Interfaz simulada de la APP (Estética Premium) */}
-                <div className="mt-6 flex justify-between items-center z-10">
-                  <span className="text-[10px] font-black tracking-widest text-neutral-400">CASA MARESMA</span>
-                  <Smartphone size={12} className="text-red-500 animate-pulse" />
-                </div>
+    {/* COLUMNA 2: INFORMACIÓN CORPORATIVA Y ENLACES OFICIALES */}
+    <motion.div 
+      initial={{ opacity: 0, x: 40 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+      className="space-y-8"
+    >
+      <div className="space-y-3">
+        <span className="text-red-500 font-bold tracking-widest text-xs uppercase block">Fidelització Digital</span>
+        <h3 className="text-4xl md:text-5xl font-black tracking-tight text-white leading-none">
+          Tots els avantatges,<br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 via-neutral-400 to-zinc-600">ara al teu telèfon.</span>
+        </h3>
+        <p className="text-zinc-400 text-base md:text-lg font-light leading-relaxed pt-2">
+          Hem digitalitzat la nostra clàssica targeta de client perquè estalviar sigui més fàcil que mai. Descarrega l'aplicació oficial de Casa Maresma i emporta't la teva botiga de confiança a la butxaca.
+        </p>
+      </div>
 
-                {/* Contenido Central del Mockup */}
-                <div className="my-auto space-y-4 text-center z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-700 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-red-950/50">
-                    <span className="text-xl font-black tracking-tighter text-white">CM</span>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-white tracking-tight">Targeta Client Digital</h4>
-                    <p className="text-[10px] text-zinc-500 mt-1">Acumula punts i gaudeix de descomptes exclusius de barri.</p>
-                  </div>
-                  {/* Código QR simulado */}
-                  <div className="w-28 h-28 bg-white p-2 rounded-xl mx-auto shadow-inner flex items-center justify-center opacity-90">
-                    <div className="w-full h-full bg-cover" style={{ backgroundImage: "url('/placeholder-qr.png')", filter: "contrast(120%)" }} />
-                  </div>
-                  <span className="text-[9px] font-mono tracking-widest text-zinc-400 block bg-zinc-900 py-1 rounded-md border border-white/5">ID: #8925_MARESMA</span>
-                </div>
-
-                {/* Estado inferior del móvil */}
-                <div className="text-center pb-2 z-10">
-                  <p className="text-[9px] text-zinc-600 font-mono">Des de 1989 al teu costat</p>
-                </div>
-
-                {/* Reflejo de cristal de la pantalla */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none z-10" />
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* COLUMNA 2: INFORMACIÓN CORPORATIVA Y ENLACES OFICIALES */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-            className="space-y-8"
-          >
-            <div className="space-y-3">
-              <span className="text-red-500 font-bold tracking-widest text-xs uppercase block">Fidelització Digital</span>
-              <h3 className="text-4xl md:text-5xl font-black tracking-tight text-white leading-none">
-                Tots els avantatges,<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 via-neutral-400 to-zinc-600">ara al teu telèfon.</span>
-              </h3>
-              <p className="text-zinc-400 text-base md:text-lg font-light leading-relaxed pt-2">
-                Hem digitalitzat la nostra clàssica targeta de client perquè estalviar sigui més fàcil que mai. Descarrega l'aplicació oficial de Casa Maresma i emporta't la teva botiga de confiança a la butxaca.
-              </p>
-            </div>
-
-            {/* Listado de características clave */}
-            <div className="space-y-4 pt-2">
-              <div className="flex items-start gap-3">
-                <CheckCircle2 size={20} className="text-red-500 shrink-0 mt-0.5" />
-                <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Acumulació automàtica de punts:</strong> Cada compra suma avantatges directes per als teus propers talls.</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 size={20} className="text-red-500 shrink-0 mt-0.5" />
-                <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Promocions exclusives:</strong> Accedeix a ofertes i vals de descompte únics només per a usuaris de l'APP.</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 size={20} className="text-red-500 shrink-0 mt-0.5" />
-                <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Informació en temps real:</strong> Consulta l'horari de la teva botiga més propera i rep notificacions importants de barri.</p>
-              </div>
-            </div>
-
-            {/* CONTENEDOR DE BOTONES DE DESCARGA OFICIALES (ESTILO TIENDA DE APLICACIONES) */}
-            <div className="flex flex-wrap gap-4 pt-6">
-              
-              {/* Botón App Store (Apple) */}
-              <a 
-                href="#" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-black hover:bg-zinc-900 text-white border border-zinc-800 px-5 py-3 rounded-2xl flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 shadow-md w-48 group"
-              >
-                {/* Icono de Apple simulado de forma vectorial */}
-                <svg className="w-6 h-6 text-white group-hover:text-red-500 transition-colors shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.7-1.13 1.84-.99 2.94 1.07.08 2.16-.52 2.82-1.33z" />
-                </svg>
-                <div className="text-left leading-none">
-                  <span className="text-[10px] text-zinc-500 block uppercase tracking-wider">Download on the</span>
-                  <span className="text-sm font-bold block mt-0.5 tracking-tight">App Store</span>
-                </div>
-              </a>
-
-              {/* Botón Google Play (Android) */}
-              <a 
-                href="#" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-black hover:bg-zinc-900 text-white border border-zinc-800 px-5 py-3 rounded-2xl flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 shadow-md w-48 group"
-              >
-                {/* Icono de Google Play simulado de forma vectorial */}
-                <svg className="w-6 h-6 text-white group-hover:text-red-500 transition-colors shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3.609 1.814L13.783 12 3.609 22.186A2.33 2.33 0 0 1 3 20.485V3.515c0-.68.225-1.31.609-1.701zm11.238 9.132l3.415-3.414a2.203 2.203 0 0 1 0 3.102l-3.415.312zM4.735 1.092h11.236l-4.433 4.432L4.735 1.092zm7.575 12.04l4.433 4.433H4.735l6.837-5.595z" />
-                </svg>
-                <div className="text-left leading-none">
-                  <span className="text-[10px] text-zinc-500 block uppercase tracking-wider">Get it on</span>
-                  <span className="text-sm font-bold block mt-0.5 tracking-tight">Google Play</span>
-                </div>
-              </a>
-
-            </div>
-          </motion.div>
-
+      {/* Llistat de característiques clau */}
+      <div className="space-y-4 pt-2">
+        <div className="flex items-start gap-3">
+          <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+          <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Acumulació automàtica de punts:</strong> Cada compra suma avantatges directes per als teus propers talls.</p>
         </div>
-      </section>
+        <div className="flex items-start gap-3">
+          <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+          <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Promocions exclusives:</strong> Accedeix a ofertes i vals de descompte únics només per a usuaris de l'APP.</p>
+        </div>
+        <div className="flex items-start gap-3">
+          <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+          <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Informació en temps real:</strong> Consulta l'horari de la teva botiga més propera i rep notificacions importants de barri.</p>
+        </div>
+      </div>
+
+      {/* CONTENEDOR DE BOTONES DE DESCARGA OFICIALES */}
+      <div className="flex flex-wrap gap-4 pt-6">
+        
+        {/* Botó App Store (Apple) */}
+        <a 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="bg-black hover:bg-zinc-900 text-white border border-zinc-800 px-5 py-3 rounded-2xl flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 shadow-md w-48 group"
+        >
+          <svg className="w-6 h-6 text-white group-hover:text-red-500 transition-colors shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.7-1.13 1.84-.99 2.94 1.07.08 2.16-.52 2.82-1.33z" />
+          </svg>
+          <div className="text-left leading-none">
+            <span className="text-[10px] text-zinc-500 block uppercase tracking-wider">Download on the</span>
+            <span className="text-sm font-bold block mt-0.5 tracking-tight">App Store</span>
+          </div>
+        </a>
+
+        {/* Botó Google Play (Android) */}
+        <a 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="bg-black hover:bg-zinc-900 text-white border border-zinc-800 px-5 py-3 rounded-2xl flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 shadow-md w-48 group"
+        >
+          <svg className="w-6 h-6 text-white group-hover:text-red-500 transition-colors shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3.609 1.814L13.783 12 3.609 22.186A2.33 2.33 0 0 1 3 20.485V3.515c0-.68.225-1.31.609-1.701zm11.238 9.132l3.415-3.414a2.203 2.203 0 0 1 0 3.102l-3.415.312zM4.735 1.092h11.236l-4.433 4.432L4.735 1.092zm7.575 12.04l4.433 4.433H4.735l6.837-5.595z" />
+          </svg>
+          <div className="text-left leading-none">
+            <span className="text-[10px] text-zinc-500 block uppercase tracking-wider">Get it on</span>
+            <span className="text-sm font-bold block mt-0.5 tracking-tight">Google Play</span>
+          </div>
+        </a>
+
+      </div>
+    </motion.div>
+
+  </div>
+</section>
 
     </main>
   );
