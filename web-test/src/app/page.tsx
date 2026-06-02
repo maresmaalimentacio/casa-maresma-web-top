@@ -276,7 +276,7 @@ export default function Home() {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="relative w-full max-w-[900px] lg:max-w-[650px] h-auto z-10 drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)]"
+        className="relative w-full max-w-[900px] lg:max-w-[950px] h-auto z-10 drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)]"
       >
         <img 
           src="/app-mockup-isometric.png" 
