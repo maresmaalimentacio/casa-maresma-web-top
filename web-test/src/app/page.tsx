@@ -122,7 +122,7 @@ export default function Home() {
             Menja millor.<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Compra al teu barri.</span>
           </h1>
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-            A Casa Maresma seleccionem origen, qualitat i tradició per oferir-te la millor experiència gastronomïca de proximitat. Tallat al teu guis, amb la confiança de sempre.
+            A Casa Maresma seleccionem origen, qualitat i tradició per oferir-te la millor experiència gastronòmica de proximitat. Tallat al teu gust, amb la confiança de sempre.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-medium px-8 py-4 rounded-xl transition-all transform hover:-translate-y-0.5 shadow-lg shadow-red-950/50 text-sm tracking-wide uppercase">Descobreix les botigues</button>
@@ -167,7 +167,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓ: LES NOSTRES BOTIGUES (Rediseñada por completo con Grid 3x2, Animaciones y Lucide Icons) */}
+      {/* SECCIÓ: LES NOSTRES BOTIGUES (Rediseñada con Grid 3x2, Animaciones y Lucide Icons) */}
       <section className="py-24 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
