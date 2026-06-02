@@ -4,11 +4,19 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Clock, Phone, ArrowUpRight } from 'lucide-react';
 
-// Componente para el contador animado
+// Componente para el contador animado corregido y blindado para SSR / Vercel Builds
 const Counter = ({ target, duration = 2000 }: { target: number; duration?: number }) => {
   const [count, setCount] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  // Forzamos a que el ciclo de vida del contador solo se active una vez montado en el cliente
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
+    if (!mounted) return;
+
     let start = 0;
     const increment = target / (duration / 16);
     
@@ -23,13 +31,16 @@ const Counter = ({ target, duration = 2000 }: { target: number; duration?: numbe
     }, 16);
 
     return () => clearInterval(timer);
-  }, [target, duration]);
+  }, [target, duration, mounted]);
+
+  // Si se está compilando en servidor, renderiza el número final de forma estática para evitar parpadeos
+  if (!mounted) return <span>{target.toLocaleString('es-ES')}</span>;
 
   return <span>{count.toLocaleString('es-ES')}</span>;
 };
 
 export default function Home() {
-  // Las 6 tiendas reales de Casa Maresma con sus datos oficiales y fotos JPG mapeadas
+  // Las 6 tiendas reales oficiales de Casa Maresma
   const botigues = [
     {
       nom: "La Botigueta de La Rambla",
@@ -93,7 +104,6 @@ export default function Home() {
     }
   ];
 
-  // Configuración de animaciones Framer Motion (Efecto Cascada / Stagger)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -114,7 +124,7 @@ export default function Home() {
   return (
     <main className="bg-black text-white min-h-screen font-sans">
       
-      {/* SECCIÓ: HERO (Manteniendo tu estructura y opacidades intactas) */}
+      {/* SECCIÓ: HERO */}
       <section className="relative h-screen flex items-center justify-center bg-cover bg-center px-4" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/hero-image-rambla.png')" }}>
         <div className="max-w-4xl text-center z-10">
           <span className="text-red-500 font-bold tracking-widest text-xs uppercase bg-red-950/50 px-3 py-1 rounded-full border border-red-900">Des de 1989 al teu costat</span>
@@ -131,7 +141,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓ: EN XIFRES (Tus contadores optimizados a 6 tiendas físicas reales) */}
+      {/* SECCIÓ: EN XIFRES */}
       <section className="py-24 bg-gradient-to-b from-neutral-950 to-black border-y border-neutral-900 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
@@ -167,7 +177,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓ: LES NOSTRES BOTIGUES (Rediseñada con Grid 3x2, Animaciones y Lucide Icons) */}
+      {/* SECCIÓ: LES NOSTRES BOTIGUES */}
       <section className="py-24 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
@@ -178,7 +188,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Grid animado interactivo */}
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
@@ -194,7 +203,6 @@ export default function Home() {
                 className="bg-neutral-900/30 border border-neutral-800/80 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group hover:border-neutral-700"
               >
                 <div>
-                  {/* Tarjeta de imagen superior con zoom en hover */}
                   <div className="relative h-48 overflow-hidden bg-neutral-950">
                     <motion.img 
                       src={botiga.img} 
@@ -208,7 +216,6 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Bloque de información con iconos minimalistas */}
                   <div className="p-6">
                     <h3 className="text-lg font-bold text-white mb-5 tracking-tight group-hover:text-red-500 transition-colors">
                       {botiga.nom}
@@ -236,7 +243,6 @@ export default function Home() {
                   </div>
                 </div>
                 
-                {/* Botón de acción directo para Google Maps */}
                 <div className="px-6 pb-6 mt-4">
                   <a 
                     href={botiga.mapsUrl} 
