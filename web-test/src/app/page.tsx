@@ -59,7 +59,7 @@ export default function Home() {
     <main className="bg-black text-white min-h-screen font-sans">
       
       {/* SECCIÓ: HERO (La que ya tenías desplegada) */}
-      <section className="relative h-screen flex items-center justify-center bg-cover bg-center px-4" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/hero-image-rambla.jpg')" }}>
+      <section className="relative h-screen flex items-center justify-center bg-cover bg-center px-4" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/hero-image-rambla.png')" }}>
         <div className="max-w-4xl text-center z-10">
           <span className="text-red-500 font-bold tracking-widest text-xs uppercase bg-red-950/50 px-3 py-1 rounded-full border border-red-900">Des de 1989 al teu costat</span>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mt-6 mb-6">
