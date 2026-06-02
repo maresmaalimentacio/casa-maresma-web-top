@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Phone, ArrowUpRight, Smartphone, CheckCircle2 } from 'lucide-react';
+import { MapPin, Clock, Phone, ArrowUpRight, Smartphone, Calendar, User } from 'lucide-react';
 
 // Componente para el contador animado blindado para SSR
 const Counter = ({ target, duration = 2000 }: { target: number; duration?: number }) => {
@@ -102,6 +102,34 @@ export default function Home() {
     }
   ];
 
+  // 🆕 Dades de les 3 notícies inventades del Blog
+  const NoticiesEnllaços = [
+    {
+      titol: "Tradició i proximitat: Com seleccionem el millor producte per al teu barri",
+      resum: "Et comptem el procés darrere de la nostra selecció diària. Des de l'origen a les nostres deveses de confiança fins al tall personalitzat a la teva botiga.",
+      data: "02 Juny, 2026",
+      autor: "Casa Maresma",
+      categoria: "Qualitat",
+      img: "/blog-noticia-1.jpg"
+    },
+    {
+      titol: "Nova APP Oficial: La teva targeta de client ara és 100% digital",
+      resum: "Estrenem aplicació mòbil per estar més a prop teu. Descobreix com acumular punts amb cada compra de barri i accedir a descomptes exclusius.",
+      data: "28 Maig, 2026",
+      autor: "Equip Digital",
+      categoria: "Novetat",
+      img: "/blog-noticia-2.jpg"
+    },
+    {
+      titol: "Receptes de sempre: Claus per preparar un dinar tradicional perfecte",
+      resum: "Els nostres experts t'ofereixen trucs clàssics de cuina i consells de preparació per treure el màxim partit als nostres elaborats artesans.",
+      data: "15 Maig, 2026",
+      autor: "Xef Maresma",
+      categoria: "Consells",
+      img: "/blog-noticia-3.jpg"
+    }
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.12 } }
@@ -118,6 +146,7 @@ export default function Home() {
       {/* SECCIÓ: HERO */}
       <section className="relative h-screen flex items-center justify-center bg-cover bg-center px-4" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/hero-image-rambla.png')" }}>
         <div className="max-w-4xl text-center z-10">
+          {/* 🔄 Modificació de la data de l'eslògan feta per l'usuari */}
           <span className="text-red-500 font-bold tracking-widest text-xs uppercase bg-red-950/50 px-3 py-1 rounded-full border border-red-900">Des de 2014 al teu costat</span>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mt-6 mb-6">
             Menja millor.<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Compra al teu barri.</span>
@@ -141,12 +170,14 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 text-center">
             <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
+              {/* 🔄 Modificació dels anys d'història feta per l'usuari */}
               <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-2">
                 +<Counter target={12} />
               </p>
               <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Anys d'història</p>
             </div>
             <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
+              {/* 🔄 Modificació dels clients feliços feta per l'usuari */}
               <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 mb-2">
                 +<Counter target={6000} />
               </p>
@@ -251,116 +282,182 @@ export default function Home() {
         </div>
       </section>
 
-{/* SECCIÓ: APP CASA MARESMA (ESTIL APPLE / TESLA ULTRA MODERNA) */}
-<section className="py-28 bg-gradient-to-b from-black to-neutral-950 overflow-hidden border-t border-neutral-900">
-  <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-    
-    {/* COLUMNA 1: MOCKUP ISOMÈTRIC AMB ANIMACIÓ DE LEVITACIÓ */}
-    <motion.div 
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative flex justify-center items-center w-full min-h-[500px]"
-    >
-      {/* Halo de llum de fons estil Tesla */}
-      <div className="absolute w-80 h-80 bg-red-600/10 blur-[130px] rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      {/* SECCIÓ: APP CASA MARESMA (ESTIL APPLE / TESLA ULTRA MODERNA) */}
+      <section className="py-28 bg-gradient-to-b from-black to-neutral-950 overflow-hidden border-t border-neutral-900">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          {/* COLUMNA 1: MOCKUP ISOMÈTRIC AMB ANIMACIÓ DE LEVITACIÓ */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative flex justify-center items-center w-full min-h-[500px]"
+          >
+            <div className="absolute w-80 h-80 bg-red-600/10 blur-[130px] rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
-      {/* Contenidor de la imatge amb moviment flotant continu (Animate infinit) */}
-      <motion.div
-        animate={{ 
-          y: [0, -15, 0],
-        }}
-        transition={{
-          duration: 4.5,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="relative w-full max-w-[900px] lg:max-w-[950px] h-auto z-10 drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)]"
-      >
-        <img 
-          src="/app-mockup-isometric.png" 
-          alt="App Casa Maresma Premium Mockup" 
-          className="w-full h-auto object-contain"
-        />
-      </motion.div>
-    </motion.div>
+            <motion.div
+              animate={{ 
+                y: [0, -15, 0],
+              }}
+              transition={{
+                duration: 4.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              {/* 🔄 Mida escalada per l'usuari a 900px / 950px en escriptori */}
+              className="relative w-full max-w-[600px] lg:max-w-[950px] h-auto z-10 drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)]"
+            >
+              <img 
+                src="/app-mockup-isometric.png" 
+                alt="App Casa Maresma Premium Mockup" 
+                className="w-full h-auto object-contain"
+              />
+            </motion.div>
+          </motion.div>
 
-    {/* COLUMNA 2: INFORMACIÓN CORPORATIVA Y ENLACES OFICIALES */}
-    <motion.div 
-      initial={{ opacity: 0, x: 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-      className="space-y-8"
-    >
-      <div className="space-y-3">
-        <span className="text-red-500 font-bold tracking-widest text-xs uppercase block">Fidelització Digital</span>
-        <h3 className="text-4xl md:text-5xl font-black tracking-tight text-white leading-none">
-          Tots els avantatges,<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 via-neutral-400 to-zinc-600">ara al teu telèfon.</span>
-        </h3>
-        <p className="text-zinc-400 text-base md:text-lg font-light leading-relaxed pt-2">
-          Hem digitalitzat la nostra clàssica targeta de client perquè estalviar sigui més fàcil que mai. Descarrega l'aplicació oficial de Casa Maresma i emporta't la teva botiga de confiança a la butxaca.
-        </p>
-      </div>
+          {/* COLUMNA 2: INFORMACIÓN CORPORATIVA Y ENLACES OFICIALES */}
+          <motion.div 
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            className="space-y-8"
+          >
+            <div className="space-y-3">
+              <span className="text-red-500 font-bold tracking-widest text-xs uppercase block">Fidelització Digital</span>
+              <h3 className="text-4xl md:text-5xl font-black tracking-tight text-white leading-none">
+                Tots els avantatges,<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 via-neutral-400 to-zinc-600">ara al teu telèfon.</span>
+              </h3>
+              <p className="text-zinc-400 text-base md:text-lg font-light leading-relaxed pt-2">
+                Hem digitalitzat la nostra clàssica targeta de client perquè estalviar sigui més fàcil que mai. Descarrega l'aplicació oficial de Casa Maresma i emporta't la teva botiga de confiança a la butxaca.
+              </p>
+            </div>
 
-      {/* Llistat de característiques clau */}
-      <div className="space-y-4 pt-2">
-        <div className="flex items-start gap-3">
-          <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-          <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Acumulació automàtica de punts:</strong> Cada compra suma avantatges directes per als teus propers talls.</p>
+            <div className="space-y-4 pt-2">
+              <div className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Acumulació automàtica de punts:</strong> Cada compra suma avantatges directes per als teus propers talls.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Promocions exclusives:</strong> Accedeix a ofertes i vals de descompte uniques només per a usuaris de l'APP.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Informació en temps real:</strong> Consulta l'horari de la teva botiga més propera i rep notificacions importants de barri.</p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-4 pt-6">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="bg-black hover:bg-zinc-900 text-white border border-zinc-800 px-5 py-3 rounded-2xl flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 shadow-md w-48 group">
+                <svg className="w-6 h-6 text-white group-hover:text-red-500 transition-colors shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.7-1.13 1.84-.99 2.94 1.07.08 2.16-.52 2.82-1.33z" /></svg>
+                <div className="text-left leading-none">
+                  <span className="text-[10px] text-zinc-500 block uppercase tracking-wider">Download on the</span>
+                  <span className="text-sm font-bold block mt-0.5 tracking-tight">App Store</span>
+                </div>
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="bg-black hover:bg-zinc-900 text-white border border-zinc-800 px-5 py-3 rounded-2xl flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 shadow-md w-48 group">
+                <svg className="w-6 h-6 text-white group-hover:text-red-500 transition-colors shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.783 12 3.609 22.186A2.33 2.33 0 0 1 3 20.485V3.515c0-.68.225-1.31.609-1.701zm11.238 9.132l3.415-3.414a2.203 2.203 0 0 1 0 3.102l-3.415.312zM4.735 1.092h11.236l-4.433 4.432L4.735 1.092zm7.575 12.04l4.433 4.433H4.735l6.837-5.595z" /></svg>
+                <div className="text-left leading-none">
+                  <span className="text-[10px] text-zinc-500 block uppercase tracking-wider">Get it on</span>
+                  <span className="text-sm font-bold block mt-0.5 tracking-tight">Google Play</span>
+                </div>
+              </a>
+            </div>
+          </motion.div>
         </div>
-        <div className="flex items-start gap-3">
-          <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-          <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Promocions exclusives:</strong> Accedeix a ofertes i vals de descompte únics només per a usuaris de l'APP.</p>
-        </div>
-        <div className="flex items-start gap-3">
-          <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-          <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Informació en temps real:</strong> Consulta l'horari de la teva botiga més propera i rep notificacions importants de barri.</p>
-        </div>
-      </div>
+      </section>
 
-      {/* CONTENEDOR DE BOTONES DE DESCARGA OFICIALES */}
-      <div className="flex flex-wrap gap-4 pt-6">
-        
-        {/* Botó App Store (Apple) */}
-        <a 
-          href="#" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="bg-black hover:bg-zinc-900 text-white border border-zinc-800 px-5 py-3 rounded-2xl flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 shadow-md w-48 group"
-        >
-          <svg className="w-6 h-6 text-white group-hover:text-red-500 transition-colors shrink-0" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.7-1.13 1.84-.99 2.94 1.07.08 2.16-.52 2.82-1.33z" />
-          </svg>
-          <div className="text-left leading-none">
-            <span className="text-[10px] text-zinc-500 block uppercase tracking-wider">Download on the</span>
-            <span className="text-sm font-bold block mt-0.5 tracking-tight">App Store</span>
+      {/* 🆕 SECCIÓ: BLOG / ÚLTIMES NOTÍCIES (ESTIL PREMIUM DISCRET) */}
+      <section className="py-24 bg-black border-t border-neutral-900">
+        <div className="max-w-7xl mx-auto px-6">
+          
+          {/* Cabecera de la sección */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="space-y-2">
+              <span className="text-red-500 font-bold tracking-widest text-xs uppercase block">Actualitat</span>
+              <h2 className="text-3xl font-bold tracking-tight md:text-5xl text-white">El Blog de Casa Maresma</h2>
+            </div>
+            <p className="text-zinc-400 font-light text-base max-w-md md:text-right">
+              Notícies, novetats i consells gastronòmics per aprofitar al màxim els nostres productes de barri.
+            </p>
           </div>
-        </a>
 
-        {/* Botó Google Play (Android) */}
-        <a 
-          href="#" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="bg-black hover:bg-zinc-900 text-white border border-zinc-800 px-5 py-3 rounded-2xl flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 shadow-md w-48 group"
-        >
-          <svg className="w-6 h-6 text-white group-hover:text-red-500 transition-colors shrink-0" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3.609 1.814L13.783 12 3.609 22.186A2.33 2.33 0 0 1 3 20.485V3.515c0-.68.225-1.31.609-1.701zm11.238 9.132l3.415-3.414a2.203 2.203 0 0 1 0 3.102l-3.415.312zM4.735 1.092h11.236l-4.433 4.432L4.735 1.092zm7.575 12.04l4.433 4.433H4.735l6.837-5.595z" />
-          </svg>
-          <div className="text-left leading-none">
-            <span className="text-[10px] text-zinc-500 block uppercase tracking-wider">Get it on</span>
-            <span className="text-sm font-bold block mt-0.5 tracking-tight">Google Play</span>
-          </div>
-        </a>
+          {/* Grid animado con las 3 noticias secuenciales */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {NoticiesEnllaços.map((noticia, idx) => (
+              <motion.article
+                key={idx}
+                variants={cardVariants}
+                className="bg-neutral-900/20 border border-neutral-900 rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-neutral-800 transition-all duration-300"
+              >
+                <div>
+                  {/* Imagen de la noticia con efecto Zoom al Hover */}
+                  <div className="relative h-52 overflow-hidden bg-neutral-950">
+                    <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md z-10 shadow-md">
+                      {noticia.categoria}
+                    </div>
+                    {/* Imagen simulada preparada para cuando subas tus archivos */}
+                    <motion.img 
+                      src={noticia.img} 
+                      alt={noticia.titol}
+                      className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.4 }}
+                    />
+                  </div>
 
-      </div>
-    </motion.div>
+                  {/* Textos e información de la tarjeta */}
+                  <div className="p-6 space-y-4">
+                    {/* Meta datos: Fecha y Autor */}
+                    <div className="flex items-center gap-4 text-zinc-500 text-xs font-mono">
+                      <div className="flex items-center gap-1.5">
+                        <Calendar size={13} />
+                        <span>{noticia.data}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <User size={13} />
+                        <span>{noticia.autor}</span>
+                      </div>
+                    </div>
 
-  </div>
-</section>
+                    {/* Título */}
+                    <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-red-500 transition-colors duration-300 line-clamp-2 leading-snug">
+                      {noticia.titol}
+                    </h3>
+
+                    {/* Breve descripción explicativa */}
+                    <p className="text-zinc-400 text-xs font-light leading-relaxed line-clamp-3">
+                      {noticia.resum}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Enlace inferior de acción */}
+                <div className="p-6 pt-0">
+                  <a 
+                    href="/blog" 
+                    className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-white group-hover:text-red-400 transition-colors border-b border-white/10 pb-1 group-hover:border-red-400/40"
+                  >
+                    <span>Llegir més</span>
+                    <ArrowUpRight size={14} className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
+                </div>
+
+              </motion.article>
+            ))}
+          </motion.div>
+
+        </div>
+      </section>
 
     </main>
   );
