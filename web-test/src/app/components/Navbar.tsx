@@ -8,7 +8,6 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBotiguesOpen, setIsBotiguesOpen] = useState(false);
 
-  // Lista de rutas internas para el menú móvil
   const botiguesRutes = [
     { nom: "La Rambla (Montcada)", url: "/botigues/la-rambla" },
     { nom: "Can Sant Joan (Montcada)", url: "/botigues/can-sant-joan" },
@@ -26,7 +25,7 @@ export default function Navbar() {
           CASA<span className="text-red-500">MARESMA</span>
         </div>
 
-        {/* Menú para Escritorio: Enlace directo y limpio */}
+        {/* Menú para Escritorio */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide uppercase">
           <a href="#" className="hover:text-red-500 transition-colors">Inici</a>
           <a href="#" className="hover:text-red-500 transition-colors">La nostra història</a>
@@ -91,7 +90,7 @@ export default function Navbar() {
                   </motion.div>
                 </button>
 
-                {/* Submenú con Solución UX Integrada */}
+                {/* Submenú con la Solución UX */}
                 <motion.div 
                   initial={false}
                   animate={{ height: isBotiguesOpen ? "auto" : 0, opacity: isBotiguesOpen ? 1 : 0 }}
@@ -100,11 +99,11 @@ export default function Navbar() {
                 >
                   <div className="py-3 px-4 w-full space-y-2.5">
                     
-                    {/* ENLACE DESTACADO: Ver todas las tiendas (Bento Grid) */}
+                    {/* ENLACE AL BENTO GRID */}
                     <a 
                       href="/botigues"
                       onClick={() => setIsMenuOpen(false)}
-                      className="text-base font-bold text-red-400 bg-red-950/30 border border-red-900/40 rounded-xl hover:text-white hover:bg-red-600 transition-colors py-3 flex items-center justify-center gap-2"
+                      className="text-base font-bold text-red-400 bg-red-950/30 border border-red-900/40 rounded-xl hover:text-white hover:bg-red-600 transition-colors py-3 flex items-center justify-center gap-2 w-full layout"
                     >
                       <Grid size={16} />
                       Veure totes les botigues
