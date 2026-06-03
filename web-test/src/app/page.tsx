@@ -140,6 +140,7 @@ export default function Home() {
   return (
     <main className="bg-black text-white min-h-screen font-sans">
       
+      {/* HERO */}
       <section className="relative h-screen flex items-center justify-center bg-cover bg-center px-4" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/hero-image-rambla.png')" }}>
         <div className="max-w-4xl text-center z-10">
           <span className="text-red-500 font-bold tracking-widest text-xs uppercase bg-red-950/50 px-3 py-1 rounded-full border border-red-900">Des de 2014 al teu costat</span>
@@ -156,6 +157,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* EN XIFRES */}
       <section className="py-24 bg-gradient-to-b from-neutral-950 to-black border-y border-neutral-900 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
@@ -164,33 +166,34 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 text-center">
             <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
-              <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-2">
-                +<Counter target="{12}"/>
-              </p>
+              <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-2">
+                +<Counter target={12} />
+              </div>
               <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Anys d'història</p>
             </div>
             <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
-              <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 mb-2">
-                +<Counter target="{6000}"/>
-              </p>
+              <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 mb-2">
+                +<Counter target={6000} />
+              </div>
               <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Clients feliços</p>
             </div>
             <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
-              <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-2">
-                <Counter target="{6}"/>
-              </p>
+              <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-2">
+                <Counter target={6} />
+              </div>
               <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Botigues físiques</p>
             </div>
             <div className="bg-neutral-900/40 border border-neutral-900 p-8 rounded-2xl backdrop-blur-sm">
-              <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 mb-2">
-                <Counter target="{100}"/>%
-              </p>
+              <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 mb-2">
+                <Counter target={100} />%
+              </div>
               <p className="text-sm font-medium uppercase tracking-wider text-gray-500">Producte de proximitat</p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* BOTIGUES */}
       <section className="py-24 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
@@ -236,7 +239,7 @@ export default function Home() {
                     
                     <div className="space-y-4 text-gray-400 text-xs font-light">
                       <div className="flex items-start gap-3">
-                        <MapPin className="text-neutral-500 shrink-0 mt-0.5" size="{15}"/>
+                        <MapPin className="text-neutral-500 shrink-0 mt-0.5" size={15} />
                         <span className="leading-relaxed text-gray-300">
                           {botiga.direccio}<br />
                           <span className="text-neutral-500">{botiga.cp} {botiga.ciutat}</span>
@@ -244,12 +247,12 @@ export default function Home() {
                       </div>
                       
                       <div className="flex items-start gap-3">
-                        <Clock className="text-neutral-500 shrink-0 mt-0.5" size="{15}"/>
+                        <Clock className="text-neutral-500 shrink-0 mt-0.5" size={15} />
                         <span className="leading-relaxed text-gray-400">{botiga.horari}</span>
                       </div>
                       
                       <div className="flex items-center gap-3">
-                        <Phone className="text-neutral-500 shrink-0" size="{15}"/>
+                        <Phone className="text-neutral-500 shrink-0" size={15} />
                         <span className="font-mono text-gray-300">{botiga.telefon}</span>
                       </div>
                     </div>
@@ -264,7 +267,7 @@ export default function Home() {
                     className="w-full inline-flex items-center justify-center gap-2 bg-neutral-800/50 hover:bg-red-600 text-white font-medium py-3 px-4 rounded-xl transition-all text-xs uppercase tracking-wider border border-neutral-700/60 hover:border-red-600 group/btn"
                   >
                     <span>Com arribar-hi</span>
-                    <ArrowUpRight className="text-neutral-400 group-hover/btn:text-white transition-colors" size="{13}"/>
+                    <ArrowUpRight className="text-neutral-400 group-hover/btn:text-white transition-colors" size={13} />
                   </a>
                 </div>
               </motion.div>
@@ -273,6 +276,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* APP */}
       <section className="py-28 bg-gradient-to-b from-black to-neutral-950 overflow-hidden border-t border-neutral-900">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -319,7 +323,7 @@ export default function Home() {
               </div>
               <div className="flex items-start gap-3">
                 <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Promocions exclusives:</strong> Accedeix a oferte i vals de descompte uniques només per a usuaris de l'APP.</p>
+                <p className="text-zinc-300 text-sm font-medium"><strong className="text-white">Promocions exclusives:</strong> Accedeix a ofertes i vals de descompte uniques només per a usuaris de l'APP.</p>
               </div>
               <div className="flex items-start gap-3">
                 <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
@@ -347,6 +351,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* BLOG */}
       <section className="py-24 bg-black border-t border-neutral-900">
         <div className="max-w-7xl mx-auto px-6">
           
@@ -356,7 +361,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold tracking-tight md:text-5xl text-white">El Blog de Casa Maresma</h2>
             </div>
             <p className="text-zinc-400 font-light text-base max-w-md md:text-right">
-              Notícies, novetats i consells gastronòmics per aprofitar al màxim els nostres productes de barri.
+              Notícies, novetats i consells gastronòmics per aprofitar al màxim els nostre productes de barri.
             </p>
           </div>
 
@@ -390,11 +395,11 @@ export default function Home() {
                   <div className="p-6 space-y-4">
                     <div className="flex items-center gap-4 text-zinc-500 text-xs font-mono">
                       <div className="flex items-center gap-1.5">
-                        <Calendar size="{13}"/>
+                        <Calendar size={13} />
                         <span>{noticia.data}</span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <User size="{13}"/>
+                        <User size={13} />
                         <span>{noticia.autor}</span>
                       </div>
                     </div>
@@ -412,7 +417,7 @@ export default function Home() {
                 <div className="p-6 pt-0">
                   <a href="/blog" className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-white group-hover:text-red-400 transition-colors border-b border-white/10 pb-1 group-hover:border-red-400/40">
                     <span>Llegir més</span>
-                    <ArrowUpRight className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" size="{14}"/>
+                    <ArrowUpRight className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" size={14} />
                   </a>
                 </div>
               </motion.article>
@@ -421,6 +426,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer className="bg-neutral-950 border-t border-neutral-900 pt-20 pb-10 text-zinc-400">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16">
           
@@ -432,15 +438,14 @@ export default function Home() {
               Selecció, tradició i qualitat des del cor del teu barri. Compromesos amb el producte de proximitat i el servei personalitzat de confiança.
             </p>
             <div className="flex items-center gap-4 pt-2">
-  {/* Instagram SVG */}
-  <a href="#" className="text-zinc-600 hover:text-red-500 transition-colors">
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-  </a>
-  {/* Facebook SVG */}
-  <a href="#" className="text-zinc-600 hover:text-red-500 transition-colors">
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-  </a>
-</div>
+              <a href="#" className="text-zinc-600 hover:text-red-500 transition-colors">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              </a>
+              <a href="#" className="text-zinc-600 hover:text-red-500 transition-colors">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+            </div>
+          </div>
 
           <div className="space-y-4">
             <h4 className="text-xs uppercase font-bold tracking-widest text-white">Navegació</h4>
@@ -455,8 +460,8 @@ export default function Home() {
           <div className="space-y-4">
             <h4 className="text-xs uppercase font-bold tracking-widest text-white">Horari General</h4>
             <div className="space-y-2 text-xs font-light text-zinc-500">
-              <p><strong className="text-zinc-400 font-medium">Dimarts a Divendres:</strong><br />08:30h - 14:00h i 17:00h - 20:30h</p>
-              <p><strong className="text-zinc-400 font-medium">Dissabtes:</strong><br />08:30h - 14:30h</p>
+              <div className="leading-relaxed"><strong className="text-zinc-400 font-medium">Dimarts a Divendres:</strong><br />08:30h - 14:00h i 17:00h - 20:30h</div>
+              <div className="leading-relaxed"><strong className="text-zinc-400 font-medium">Dissabtes:</strong><br />08:30h - 14:30h</div>
               <p className="text-[10px] italic text-zinc-600">*Consulta l'horari de cada mercat o local a la secció de botigues.</p>
             </div>
           </div>
@@ -465,15 +470,15 @@ export default function Home() {
             <h4 className="text-xs uppercase font-bold tracking-widest text-white">Contacte</h4>
             <ul className="space-y-3 text-xs font-light">
               <li className="flex items-center gap-2.5">
-                <Mail className="text-zinc-600" size="{14}"/>
+                <Mail className="text-zinc-600" size={14} />
                 <a href="mailto:info@casamaresma.cat" className="hover:text-white transition-colors">info@casamaresma.cat</a>
               </li>
               <li className="flex items-center gap-2.5 font-mono">
-                <Phone className="text-zinc-600" size="{14}"/>
+                <Phone className="text-zinc-600" size={14} />
                 <span className="text-zinc-300">935 64 64 94</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <MapPin className="text-zinc-600" size="{14}"/>
+                <MapPin className="text-zinc-600" size={14} />
                 <span className="text-zinc-500">Barcelona i voltants</span>
               </li>
             </ul>
