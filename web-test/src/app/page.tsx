@@ -107,7 +107,7 @@ export default function Home() {
       data: "02 Juny, 2026",
       autor: "Casa Maresma",
       categoria: "Qualitat",
-      img: "/blog-noticia-1.jpg"
+      img: "/blog-noticia-1.webp"
     },
     {
       titol: "Nova APP Oficial: La teva targeta de client ara és 100% digital",
@@ -115,7 +115,7 @@ export default function Home() {
       data: "28 Maig, 2026",
       autor: "Equip Digital",
       categoria: "Novetat",
-      img: "/blog-noticia-2.jpg"
+      img: "/blog-noticia-2.webp"
     },
     {
       titol: "Receptes de sempre: Claus per preparar un dinar tradicional perfecte",
@@ -123,7 +123,7 @@ export default function Home() {
       data: "15 Maig, 2026",
       autor: "Xef Maresma",
       categoria: "Consells",
-      img: "/blog-noticia-3.jpg"
+      img: "/blog-noticia-3.webp"
     }
   ];
 
