@@ -427,29 +427,38 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-neutral-950 border-t border-neutral-900 pt-20 pb-10 text-zinc-400">
+      <footer className="bg-neutral-950 border-t border-neutral-900 pt-20 pb-10 text-zinc-300">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16">
           
-          <div className="space-y-5">
+          {/* COLUMNA 1: LOGO Y REDES */}
+          <div className="space-y-6">
             <div className="flex items-center gap-2">
-              <span className="font-black tracking-tighter text-xl text-white">CASA<span className="text-red-600">MARESMA</span></span>
+              {/* Cambia '/logo.png' por la ruta exacta de la imagen que usas en la Navbar */}
+              <img src="/logo-casa-maresma.png" alt="Casa Maresma" className="h-10 w-auto object-contain" />
             </div>
-            <p className="text-xs font-light leading-relaxed text-zinc-500 max-w-xs">
+            <p className="text-sm font-normal leading-relaxed text-zinc-400 max-w-xs">
               Selecció, tradició i qualitat des del cor del teu barri. Compromesos amb el producte de proximitat i el servei personalitzat de confiança.
             </p>
             <div className="flex items-center gap-4 pt-2">
-              <a href="#" className="text-zinc-600 hover:text-red-500 transition-colors">
+              {/* Instagram */}
+              <a href="https://www.instagram.com/casamaresma/" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-red-500 transition-colors" title="Instagram">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
               </a>
-              <a href="#" className="text-zinc-600 hover:text-red-500 transition-colors">
+              {/* Facebook */}
+              <a href="https://www.facebook.com/casamaresma" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-red-500 transition-colors" title="Facebook">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              {/* TikTok */}
+              <a href="https://www.tiktok.com/@casamaresma" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-red-500 transition-colors" title="TikTok">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5h-3a2 2 0 0 1-2-2V4h-2v12a4 4 0 0 0-4-4z" /></svg>
               </a>
             </div>
           </div>
 
+          {/* COLUMNA 2: NAVEGACIÓ */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase font-bold tracking-widest text-white">Navegació</h4>
-            <ul className="space-y-2.5 text-xs font-light">
+            <h4 className="text-base uppercase font-bold tracking-widest text-white">Navegació</h4>
+            <ul className="space-y-3 text-sm font-normal text-zinc-400">
               <li><a href="#" className="hover:text-white transition-colors">Inici</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Les nostres botigues</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Descarrega l'APP</a></li>
@@ -457,45 +466,71 @@ export default function Home() {
             </ul>
           </div>
 
+          {/* COLUMNA 3: BOTIGUES (NUEVA) */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase font-bold tracking-widest text-white">Horari General</h4>
-            <div className="space-y-2 text-xs font-light text-zinc-500">
-              <div className="leading-relaxed"><strong className="text-zinc-400 font-medium">Dimarts a Divendres:</strong><br />08:30h - 14:00h i 17:00h - 20:30h</div>
-              <div className="leading-relaxed"><strong className="text-zinc-400 font-medium">Dissabtes:</strong><br />08:30h - 14:30h</div>
-              <p className="text-[10px] italic text-zinc-600">*Consulta l'horari de cada mercat o local a la secció de botigues.</p>
-            </div>
+            <h4 className="text-base uppercase font-bold tracking-widest text-white">Botigues</h4>
+            <ul className="space-y-3 text-sm font-normal text-zinc-400">
+              <li>
+                <a href="https://www.google.com/maps/search/?api=1&query=La+Botigueta+de+La+Rambla+Montcada+i+Reixac" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors block">
+                  La Rambla <span className="text-xs text-zinc-500">(Montcada)</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.google.com/maps/search/?api=1&query=La+Botigueta+de+Can+Sant Joan+Montcada" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors block">
+                  Can Sant Joan <span className="text-xs text-zinc-500">(Montcada)</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.google.com/maps/search/?api=1&query=La+botigueta+del+Carrer+Major+Montcada" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors block">
+                  Carrer Major <span className="text-xs text-zinc-500">(Montcada)</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.google.com/maps/search/?api=1&query=La+Botigueta+del+Central+Mercat+Sabadell" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors block">
+                  Mercat Central <span className="text-xs text-zinc-500">(Sabadell)</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.google.com/maps/search/?api=1&query=La+Botigueta+de+la+Llibertat+Mercat+Barcelona" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors block">
+                  Mercat de la Llibertat <span className="text-xs text-zinc-500">(Bcn)</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.google.com/maps/search/?api=1&query=La+Botigueta+d+En+Quimet+Barcelona" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors block">
+                  Av. República Argentina <span className="text-xs text-zinc-500">(Bcn)</span>
+                </a>
+              </li>
+            </ul>
           </div>
 
+          {/* COLUMNA 4: CONTACTE */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase font-bold tracking-widest text-white">Contacte</h4>
-            <ul className="space-y-3 text-xs font-light">
-              <li className="flex items-center gap-2.5">
-                <Mail className="text-zinc-600" size={14} />
+            <h4 className="text-base uppercase font-bold tracking-widest text-white">Contacte</h4>
+            <ul className="space-y-4 text-sm font-normal text-zinc-400">
+              <li className="flex items-center gap-3">
+                <Mail className="text-zinc-500 shrink-0" size={16} />
                 <a href="mailto:info@casamaresma.cat" className="hover:text-white transition-colors">info@casamaresma.cat</a>
               </li>
-              <li className="flex items-center gap-2.5 font-mono">
-                <Phone className="text-zinc-600" size={14} />
-                <span className="text-zinc-300">935 64 64 94</span>
+              <li className="flex items-center gap-3 font-mono">
+                <Phone className="text-zinc-500 shrink-0" size={16} />
+                <span className="text-zinc-200">935 64 64 94</span>
               </li>
-              <li className="flex items-center gap-2.5">
-                <MapPin className="text-zinc-600" size={14} />
-                <span className="text-zinc-500">Barcelona i voltants</span>
+              <li className="flex items-start gap-3">
+                <MapPin className="text-zinc-500 shrink-0 mt-0.5" size={16} />
+                <span className="text-zinc-400">Barcelona i voltants</span>
               </li>
             </ul>
           </div>
 
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 border-t border-neutral-900/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-light text-zinc-600">
+        {/* BARRA INFERIOR DE COPYRIGHT */}
+        <div className="max-w-7xl mx-auto px-6 border-t border-neutral-900 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-normal text-zinc-500">
           <p>© {new Date().getFullYear()} Casa Maresma. Des de 2014 al teu costat.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-zinc-400 transition-colors">Avís Legal</a>
-            <a href="#" className="hover:text-zinc-400 transition-colors">Política de Privacitat</a>
-            <a href="#" className="hover:text-zinc-400 transition-colors">Cookies</a>
+            <a href="#" className="hover:text-zinc-300 transition-colors">Avís Legal</a>
+            <a href="#" className="hover:text-zinc-300 transition-colors">Política de Privacitat</a>
+            <a href="#" className="hover:text-zinc-300 transition-colors">Cookies</a>
           </div>
         </div>
       </footer>
-
-    </main>
-  );
-}
