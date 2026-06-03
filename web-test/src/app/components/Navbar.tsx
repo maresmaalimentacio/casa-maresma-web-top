@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, MapPin } from 'lucide-react';
+import { Menu, X, ChevronDown, MapPin, Grid } from 'lucide-react';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBotiguesOpen, setIsBotiguesOpen] = useState(false);
 
-  // Enlaces actualizados a las rutas internas de tu web en lugar de Google Maps exterior
+  // Lista de rutas internas para el menú móvil
   const botiguesRutes = [
     { nom: "La Rambla (Montcada)", url: "/botigues/la-rambla" },
     { nom: "Can Sant Joan (Montcada)", url: "/botigues/can-sant-joan" },
@@ -26,11 +26,10 @@ export default function Navbar() {
           CASA<span className="text-red-500">MARESMA</span>
         </div>
 
-        /* Menú para Escritorio */
+        {/* Menú para Escritorio: Enlace directo y limpio */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide uppercase">
           <a href="#" className="hover:text-red-500 transition-colors">Inici</a>
           <a href="#" className="hover:text-red-500 transition-colors">La nostra història</a>
-          {/* Apunta directamente a la nueva sección Bento Grid */}
           <a href="/botigues" className="hover:text-red-500 transition-colors">Botigues</a>
         </div>
 
@@ -80,45 +79,48 @@ export default function Navbar() {
                 La nostra història
               </a>
               
-              {/* Contenedor del Desplegable de Tiendas */}
+              {/* Desplegable de Tiendas Móvil */}
               <div className="w-full max-w-sm flex flex-col items-center">
-                <div className="flex items-center gap-4 justify-center py-1">
-                  {/* El texto "Botigues" ahora es un enlace a la sección general */}
-                  <a 
-                    href="/botigues"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-3xl font-extrabold text-white hover:text-red-500 transition-colors tracking-tight"
-                  >
-                    Botigues
-                  </a>
-                  {/* La flecha despliega las tiendas individuales */}
-                  <button 
-                    onClick={() => setIsBotiguesOpen(!isBotiguesOpen)}
-                    className="focus:outline-none p-1"
-                    aria-label="Desplegar llistat de botigues"
-                  >
-                    <motion.div animate={{ rotate: isBotiguesOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                      <ChevronDown size={28} className="text-red-500" />
-                    </motion.div>
-                  </button>
-                </div>
+                <button 
+                  onClick={() => setIsBotiguesOpen(!isBotiguesOpen)}
+                  className="text-3xl font-extrabold text-white hover:text-red-500 transition-colors tracking-tight flex items-center gap-2 justify-center py-1 focus:outline-none"
+                >
+                  <span>Botigues</span>
+                  <motion.div animate={{ rotate: isBotiguesOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                    <ChevronDown size={28} className="text-red-500" />
+                  </motion.div>
+                </button>
 
-                {/* Submenú de las tiendas */}
+                {/* Submenú con Solución UX Integrada */}
                 <motion.div 
                   initial={false}
                   animate={{ height: isBotiguesOpen ? "auto" : 0, opacity: isBotiguesOpen ? 1 : 0 }}
                   transition={{ duration: 0.25, ease: "easeInOut" }}
-                  className="overflow-hidden w-full flex flex-col items-center space-y-3 mt-4 bg-white/5 rounded-xl backdrop-blur-sm"
+                  className="overflow-hidden w-full flex flex-col items-center mt-4 bg-white/5 rounded-2xl backdrop-blur-sm"
                 >
-                  <div className="py-3 px-4 w-full space-y-3">
+                  <div className="py-3 px-4 w-full space-y-2.5">
+                    
+                    {/* ENLACE DESTACADO: Ver todas las tiendas (Bento Grid) */}
+                    <a 
+                      href="/botigues"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="text-base font-bold text-red-400 bg-red-950/30 border border-red-900/40 rounded-xl hover:text-white hover:bg-red-600 transition-colors py-3 flex items-center justify-center gap-2"
+                    >
+                      <Grid size={16} />
+                      Veure totes les botigues
+                    </a>
+
+                    <div className="h-[1px] bg-white/5 my-1" />
+
+                    {/* Tiendas individuales */}
                     {botiguesRutes.map((botiga, idx) => (
                       <a 
                         key={idx}
                         href={botiga.url}
                         onClick={() => setIsMenuOpen(false)}
-                        className="text-base font-medium text-neutral-300 hover:text-red-400 transition-colors py-1.5 flex items-center justify-center gap-2 border-b border-white/5 last:border-none"
+                        className="text-sm font-medium text-neutral-400 hover:text-white transition-colors py-2 flex items-center justify-center gap-2 border-b border-white/5 last:border-none"
                       >
-                        <MapPin size={14} className="text-neutral-500" />
+                        <MapPin size={13} className="text-neutral-600" />
                         {botiga.nom}
                       </a>
                     ))}
@@ -127,7 +129,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Sello de marca en el pie del menú */}
+            {/* Sello de marca */}
             <div className="text-center text-xs text-neutral-500 font-mono tracking-widest uppercase mt-8">
               Des de 1989 al teu costat
             </div>
