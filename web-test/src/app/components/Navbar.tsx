@@ -103,7 +103,7 @@ export default function Navbar() {
                     <a 
                       href="/botigues"
                       onClick={() => setIsMenuOpen(false)}
-                      className="text-base font-bold text-red-400 bg-red-950/30 border border-red-900/40 rounded-xl hover:text-white hover:bg-red-600 transition-colors py-3 flex items-center justify-center gap-2 w-full layout"
+                      className="text-base font-bold text-red-400 bg-red-950/30 border border-red-900/40 rounded-xl hover:text-white hover:bg-red-600 transition-colors py-3 flex items-center justify-center gap-2 w-full"
                     >
                       <Grid size={16} />
                       Veure totes les botigues
