@@ -140,7 +140,7 @@ export default function Home() {
   return (
     <main className="bg-black text-white min-h-screen font-sans">
       
-      {/* HERO */}
+{/* HERO */}
       <section className="relative h-screen flex items-center justify-center bg-cover bg-center px-4" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/hero-image-rambla.png')" }}>
         <div className="max-w-4xl text-center z-10">
           <span className="text-red-500 font-bold tracking-widest text-xs uppercase bg-red-950/50 px-3 py-1 rounded-full border border-red-900">Des de 2014 al teu costat</span>
@@ -151,8 +151,20 @@ export default function Home() {
             A Casa Maresma seleccionem origen, qualitat i tradició per oferir-te la millor experiència gastronòmica de proximitat. Tallat al teu gust, amb la confianza de sempre.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-medium px-8 py-4 rounded-xl transition-all transform hover:-translate-y-0.5 shadow-lg shadow-red-950/50 text-sm tracking-wide uppercase">Descobreix les botigues</button>
-            <button className="bg-white/5 hover:bg-white/10 text-white border border-white/10 font-medium px-8 py-4 rounded-xl transition-all text-sm tracking-wide uppercase backdrop-blur-sm">La nostra història</button>
+            {/* ENLAZADO DIRECTAMENTE A LA PÁGINA GENERAL DE TIENDAS */}
+            <a 
+              href="/botigues" 
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-medium px-8 py-4 rounded-xl transition-all transform hover:-translate-y-0.5 shadow-lg shadow-red-950/50 text-sm tracking-wide uppercase inline-block text-center"
+            >
+              Descobreix les botigues
+            </a>
+            
+            <a 
+              href="#" 
+              className="bg-white/5 hover:bg-white/10 text-white border border-white/10 font-medium px-8 py-4 rounded-xl transition-all text-sm tracking-wide uppercase backdrop-blur-sm inline-block text-center"
+            >
+              La nostra història
+            </a>
           </div>
         </div>
       </section>
